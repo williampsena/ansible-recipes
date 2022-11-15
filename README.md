@@ -8,4 +8,4 @@ This repository contains Ansible examples such as deploy, build, and test, as we
  ```
 
 # Related articles
-[https://willsena.dev/run-your-first-ansible-playbook/](Run your first Ansible playbook)
+- [Run your first Ansible playbook](https://willsena.dev/run-your-first-ansible-playbook/)
