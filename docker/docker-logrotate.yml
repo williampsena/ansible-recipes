@@ -1,0 +1,23 @@
+---
+- name: Set up docker log rotation
+  gather_facts: no
+  hosts: all
+  become: yes
+
+  tasks:
+    - name: create the log rotate file
+      copy:
+        dest: /etc/logrotate.d/docker-container
+        content: |
+            /var/lib/docker/containers/*/*.log {
+                rotate 7
+                daily
+                compress
+                size=1M
+                missingok
+                delaycompress
+                copytruncate
+            }
+
+    - name: testing docker logrotate
+      command: logrotate -fv /etc/logrotate.d/docker-container
