@@ -1,0 +1,23 @@
+---
+- name: Run your first playbook and deploy docker containers
+  gather_facts: no
+  hosts: localhost
+  connection: local
+
+  tasks:
+    - name: Clean up images and containers.
+      shell: docker-compose down --rmi local
+
+    - name: Build a docker images.
+      shell: docker-compose -f docker-compose.yml build
+
+    - name: Testing application inside a docker container.
+      shell: docker-compose -f docker-compose.yml run --rm tests
+
+    - name: Running a docker container.
+      shell: docker-compose -f docker-compose.yml up -d api
+
+    - name: Health checks for container exposed port 3000.
+      wait_for: host=localhost port=3000 timeout=1
+      retries: 10
+      delay: 3

@@ -1,0 +1,16 @@
+version: "3.9"
+
+services:
+  api:
+    build: ./
+    ports:
+      - "3000:3000"
+    healthcheck:
+      test: ["CMD", "nc", "-z", "-v", "localhost", "3000"]
+      interval: 10s
+      timeout: 5s
+      retries: 5
+
+  tests:
+    build: ./
+    entrypoint: pytest /app
