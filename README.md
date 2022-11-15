@@ -9,3 +9,4 @@ This repository contains Ansible examples such as deploy, build, and test, as we
 
 # Related articles
 - [Run your first Ansible playbook](https://willsena.dev/run-your-first-ansible-playbook/)
+- [Strategies for Rotating Docker Logs](https://willsena.dev/strategies-for-rotating-docker-logs/)
